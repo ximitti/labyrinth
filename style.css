@@ -1,0 +1,80 @@
+html,
+body,
+header,
+main {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 16px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+}
+
+main#container {
+  margin: 10px auto;
+  min-width: 800px;
+  width: 100%;
+  border: 1px solid #000;
+}
+
+main div#board {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px auto;
+  max-width: 600px;
+  width: 100%;
+  padding: 5px;
+  justify-content: center;
+  border: 1px solid #000;
+}
+
+div#player {
+  width: 20px;
+  height: 20px;
+  background-image: url("https://picsum.photos/20/20/");
+}
+
+.line {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.wall {
+  background-color: #00f;
+  width: 25px;
+  height: 25px;
+}
+
+.path {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.start {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.finish {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
