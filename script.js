@@ -26,10 +26,10 @@ const generateBoard = () => {
   for (let i = 0; i < map.length; i++) {
     const line = document.createElement("div");
     line.classList.add("line");
-    let charArr = map[i].split("");
-    for (let j = 0; j < charArr.length; j++) {
+
+    for (let j = 0; j < map[i].length; j++) {
       const block = document.createElement("div");
-      switch (charArr[j]) {
+      switch (map[i][j]) {
         case "W":
           block.classList.add("wall");
           line.appendChild(block);
@@ -40,7 +40,14 @@ const generateBoard = () => {
           break;
         case "S":
           const player = document.createElement("div");
+          const img = document.createElement("img");
+          img.src = "./carro.png";
+          img.alt = "carro";
+          img.width = "20";
+          img.height = "20";
           player.id = "player";
+          player.setAttribute("class", "right");
+          player.appendChild(img);
           block.appendChild(player);
           block.classList.add("start");
           line.appendChild(block);
@@ -58,40 +65,31 @@ const generateBoard = () => {
 };
 
 const moveUp = () => {
-  // linha de cima
-  let up = player.parentElement.parentElement.previousSibling.children;
-  // pegar o índice atual
-  let iul = 0;
-  let arrNextLine = player.parentElement.parentElement.children;
-  for (let i = 0; i < arrNextLine.length; i++) {
-    if (arrNextLine[i].childElementCount > 0) {
-      iul = i;
-    }
-  }
-  if (up[iul].className === "path") {
-    up[iul].appendChild(player);
+  let up = [...player.parentElement.parentElement.previousSibling.children];
+  let arrUpLine = [...player.parentElement.parentElement.childNodes];
+  let index = arrUpLine.findIndex((e) => e.childElementCount > 0);
+
+  if (up[index].className === "path") {
+    player.setAttribute("class", "up");
+    up[index].appendChild(player);
   }
 };
 
 const moveDown = () => {
-  // linha de baixo
-  let down = player.parentElement.parentElement.nextSibling.children;
-  // pegar o índice atual
-  let idl = 0;
-  let arrDownLine = player.parentElement.parentElement.children;
-  for (let i = 0; i < arrDownLine.length; i++) {
-    if (arrDownLine[i].childElementCount > 0) {
-      idl = i;
-    }
-  }
-  if (down[idl].className === "path") {
-    down[idl].appendChild(player);
+  let down = [...player.parentElement.parentElement.nextSibling.children];
+  let arrDownLine = [...player.parentElement.parentElement.childNodes];
+  let index = arrDownLine.findIndex((e) => e.childElementCount > 0);
+
+  if (down[index].className === "path") {
+    player.setAttribute("class", "down");
+    down[index].appendChild(player);
   }
 };
 
 const moveLeft = () => {
   let left = player.parentElement.previousSibling;
   if (left.className === "path" || left.className === "start") {
+    player.setAttribute("class", "left");
     left.appendChild(player);
   }
 };
@@ -99,6 +97,7 @@ const moveLeft = () => {
 const moveRight = () => {
   let right = player.parentElement.nextSibling;
   if (right.className === "path" || right.className === "finish") {
+    player.setAttribute("class", "right");
     right.appendChild(player);
   }
 };
@@ -134,7 +133,7 @@ const resetGame = () => {
 const checkVictory = () => {
   if (player.parentElement.className === "finish") {
     victory = true;
-    document.querySelector("#vitoria").removeAttribute('hidden');
+    document.querySelector("#vitoria").removeAttribute("hidden");
   }
 };
 

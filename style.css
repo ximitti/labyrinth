@@ -68,7 +68,18 @@ main div#vitoria {
 div#player {
   width: 20px;
   height: 20px;
-  background-image: url("https://picsum.photos/20/20/");
+}
+div#player.right {
+  transform: rotate(90deg);
+}
+div#player.left {
+  transform: rotate(-90deg);
+}
+div#player.up {
+  transform: rotate(0deg);
+}
+div#player.down {
+  transform: rotate(180deg);
 }
 
 .line {
