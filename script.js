@@ -15,8 +15,12 @@ const map = [
   "W       W       W   W",
   "WWWWWWWWWWWWWWWWWWWWW",
 ];
+let victory = false;
 
 const generateBoard = () => {
+  victory = false;
+  document.querySelector("#vitoria").setAttribute("hidden", true);
+
   const board = document.querySelector("#board");
 
   for (let i = 0; i < map.length; i++) {
@@ -123,14 +127,26 @@ const movePlayer = (key) => {
 
 const resetGame = () => {
   const board = document.querySelector("#board");
-  board.innerHTML = '';
+  board.innerHTML = "";
   generateBoard();
-}
+};
+
+const checkVictory = () => {
+  if (player.parentElement.className === "finish") {
+    victory = true;
+    document.querySelector("#vitoria").removeAttribute('hidden');
+  }
+};
 
 // Start Game
 generateBoard();
 
 document.addEventListener("keydown", (event) => {
   const keyPressed = event.key;
-  movePlayer(keyPressed);
+  if (!victory) {
+    movePlayer(keyPressed);
+    checkVictory();
+  }
 });
+
+document.querySelector("#reset").addEventListener("click", resetGame);

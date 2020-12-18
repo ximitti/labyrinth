@@ -19,9 +19,9 @@ header h1 {
 
 main#container {
   margin: 10px auto;
-  min-width: 800px;
+  max-width: 800px;
   width: 100%;
-  border: 1px solid #000;
+  position: relative;
 }
 
 main div#board {
@@ -32,7 +32,37 @@ main div#board {
   width: 100%;
   padding: 5px;
   justify-content: center;
-  border: 1px solid #000;
+}
+
+main div#btn {
+  margin: 10px auto;
+  padding: 5px;
+  text-align: center;
+}
+
+div#btn button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  text-transform: uppercase;
+  line-height: 1.2;
+  width: 100px;
+  font-size: 1.1rem;
+  box-shadow: 0 0 3px #808080;
+}
+
+main div#vitoria {
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 300px;
+  width: 100%;
+  padding: 5px;
+  position: absolute;
+  z-index: 5;
+  top: 130px;
+  left: 250px;
+  text-align: center;
+  box-shadow: 0 0 5px 3px #303030;
 }
 
 div#player {
@@ -47,7 +77,7 @@ div#player {
 }
 
 .wall {
-  background-color: #00f;
+  background-color: #009;
   width: 25px;
   height: 25px;
 }
@@ -62,6 +92,7 @@ div#player {
 }
 
 .start {
+  background-color: #090;
   width: 25px;
   height: 25px;
   display: flex;
@@ -71,6 +102,7 @@ div#player {
 }
 
 .finish {
+  background-color: #090;
   width: 25px;
   height: 25px;
   display: flex;
